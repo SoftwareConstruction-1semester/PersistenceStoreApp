@@ -11,7 +11,6 @@
         <Grid.DataContext>
             <local:MainViewModel/>
         </Grid.DataContext>
-        <TextBox HorizontalAlignment="Left" Margin="89,64,0,0" TextWrapping="Wrap" Text="{Binding ClearText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Height="388" Width="399"/>
         <Button Content="Save Text" HorizontalAlignment="Left" Margin="395,468,0,0" VerticalAlignment="Top" Command="{Binding SaveClearTextCommand}"/>
         <Button Content="Load Text" HorizontalAlignment="Left" Margin="86,468,0,0" VerticalAlignment="Top" Command="{Binding LoadClearTextCommand}">
             <Button.DataContext>
@@ -25,6 +24,7 @@
         <TextBox HorizontalAlignment="Left" Margin="715,175,0,0" TextWrapping="Wrap" Text="{Binding Student.LastName, Mode=TwoWay}" VerticalAlignment="Top"/>
         <Button Content="Object to XML" HorizontalAlignment="Left" Margin="664,257,0,0" VerticalAlignment="Top" Command="{Binding SerializeStudentCommand}"/>
         <Button Content="XML to Object" HorizontalAlignment="Left" Margin="664,304,0,0" VerticalAlignment="Top" Command="{Binding DeserializeStudentCommand}"/>
+        <TextBox HorizontalAlignment="Left" Margin="89,77,0,0" TextWrapping="Wrap" Text="{Binding ClearText, Mode=TwoWay}" VerticalAlignment="Top" Height="377" Width="399"/>
 
     </Grid>
 </Page>

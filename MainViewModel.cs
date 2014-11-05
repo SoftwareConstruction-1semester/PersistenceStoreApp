@@ -19,7 +19,7 @@ namespace PersistenceStoreApp
     class MainViewModel : INotifyPropertyChanged
     {
         // where we can save files
-        private StorageFolder storageFolder = ApplicationData.Current.LocalFolder;
+        private StorageFolder _storageFolder = ApplicationData.Current.LocalFolder;
 
         private ICommand _saveClearTextCommand;
         private ICommand _loadClearTextCommand;
@@ -72,10 +72,8 @@ namespace PersistenceStoreApp
 
         private async void LoadClearText()
         {
-            //get file
-            StorageFile file = await GetStorageFile();
             //create stram to file
-            Stream stream = await file.OpenStreamForReadAsync();
+            Stream stream = await _storageFolder.OpenStreamForReadAsync("ClearText.txt");
             //connect streamwriter to stream
             StreamReader streamReader = new StreamReader(stream);
             
@@ -88,10 +86,8 @@ namespace PersistenceStoreApp
 
         private async void SaveClearText()
         {
-            //get file
-            StorageFile file = await GetStorageFile();
             //create stram to file
-            Stream stream = await file.OpenStreamForWriteAsync();
+            Stream stream = await _storageFolder.OpenStreamForWriteAsync("ClearText.txt", CreationCollisionOption.ReplaceExisting);
             //connect streamwriter to stream
             StreamWriter streamWriter = new StreamWriter(stream);
             //write text
@@ -100,19 +96,6 @@ namespace PersistenceStoreApp
             stream.Dispose();
         }
 
-        private async Task<StorageFile> GetStorageFile()
-        {
-            StorageFile file = null;
-            try
-            {
-                file = await storageFolder.GetFileAsync("ClearText.txt");
-            }
-            catch (Exception)
-            {
-            }
-            if (file == null) file = await storageFolder.CreateFileAsync("ClearText.txt");
-            return file;
-        }
 
         public ICommand SaveClearTextCommand
         {
