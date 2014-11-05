@@ -1,0 +1,30 @@
+﻿<Page
+    x:Class="PersistenceStoreApp.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:PersistenceStoreApp"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.DataContext>
+            <local:MainViewModel/>
+        </Grid.DataContext>
+        <TextBox HorizontalAlignment="Left" Margin="89,64,0,0" TextWrapping="Wrap" Text="{Binding ClearText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Height="388" Width="399"/>
+        <Button Content="Save Text" HorizontalAlignment="Left" Margin="395,468,0,0" VerticalAlignment="Top" Command="{Binding SaveClearTextCommand}"/>
+        <Button Content="Load Text" HorizontalAlignment="Left" Margin="86,468,0,0" VerticalAlignment="Top" Command="{Binding LoadClearTextCommand}">
+            <Button.DataContext>
+                <local:MainViewModel/>
+            </Button.DataContext>
+        </Button>
+        <TextBlock HorizontalAlignment="Left" Margin="652,64,0,0" TextWrapping="Wrap" Text="Student" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="652,134,0,0" TextWrapping="Wrap" Text="first name" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="652,194,0,0" TextWrapping="Wrap" Text="last name" VerticalAlignment="Top" RenderTransformOrigin="0.5,2.385"/>
+        <TextBox HorizontalAlignment="Left" Margin="715,115,0,0" TextWrapping="Wrap" Text="{Binding Student.FirstName, Mode=TwoWay}" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Margin="715,175,0,0" TextWrapping="Wrap" Text="{Binding Student.LastName, Mode=TwoWay}" VerticalAlignment="Top"/>
+        <Button Content="Object to XML" HorizontalAlignment="Left" Margin="664,257,0,0" VerticalAlignment="Top" Command="{Binding SerializeStudentCommand}"/>
+        <Button Content="XML to Object" HorizontalAlignment="Left" Margin="664,304,0,0" VerticalAlignment="Top" Command="{Binding DeserializeStudentCommand}"/>
+
+    </Grid>
+</Page>
